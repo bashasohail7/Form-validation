@@ -68,7 +68,7 @@ import axios from 'axios';
         let mpattern = /^[6-9]\d{9,11}$/; // 6-9 refers to number start from 6 to 9 and \d refers to digit and {9} refers to 10 digits [array 0 to 9]
         let epattern=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
-      if((fieldList.mobile&&fieldList.mobile.length<10)|| !document.getElementById('dob').value|| !document.querySelector('input[name="gender"]:checked')||(document.getElementById('states').value<0)||(!document.getElementById('dist').value)||( ! this.state.fname || this.state.fname.length<3)||(! epattern.test(fieldList.email)))
+      if((fieldList.mobile&&!mpattern.test(fieldList.mobile))|| !document.getElementById('dob').value|| !document.querySelector('input[name="gender"]:checked')||(document.getElementById('states').value<0)||(!document.getElementById('dist').value)||( ! this.state.fname || this.state.fname.length<3)||(! epattern.test(fieldList.email)))
       {
         
         if(!document.querySelector('input[name="gender"]:checked')){
@@ -93,7 +93,7 @@ import axios from 'axios';
             errorList["emailError"]="Please enter valid emailid !"
         }else{errorList["emailError"]="";this.borderNone('email')}
 //MOBILE RECTIFICTAION
-if(fieldList.mobile&&fieldList.mobile.length<10){
+if(fieldList.mobile&&!mpattern.test(fieldList.mobile)){
         errorList['mobileError']='please enter valid mobile number';this.borderRed('mobile')
     }else{ errorList['mobileError']='';this.borderNone('mobile')}
 
