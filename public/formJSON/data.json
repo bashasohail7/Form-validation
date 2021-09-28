@@ -1,0 +1,101 @@
+{
+  "state_dist": [
+    {
+      "id": 0,
+      "name": "Andhra Pradesh",
+      "districts": [
+        {
+          "id": 1001,
+          "name": "Anantpur "
+        },
+        {
+          "id": 1002,
+          "name": "Chittoor"
+        },
+        {
+          "id": 1003,
+          "name": "Nellore"
+        },
+        {
+          "id": 1004,
+          "name": "Prakasam "
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Arunachal Pradesh",
+      "districts": [
+        {
+          "id": 2001,
+          "name": "Anjaw"
+        },
+        {
+          "id": 2002,
+          "name": "Changlang"
+        },
+        {
+          "id": 2003,
+          "name": "East Siang"
+        },
+        {
+          "id": 2004,
+          "name": "Tawang"
+        },
+        {
+          "id": 2005,
+          "name": "West Kameng"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Assam",
+      "districts": [
+        {
+          "id": 3001,
+          "name": "Baksa"
+        },
+        {
+          "id": 3002,
+          "name": "Barpeta"
+        },
+        {
+          "id": 3003,
+          "name": "Bongaigaon"
+        },
+        {
+          "id": 3004,
+          "name": "Cachar "
+        },
+        {
+          "id": 3005,
+          "name": "Chirang"
+        },
+        {
+          "id": 3006,
+          "name": "Darrang"
+        },
+        {
+          "id": 3007,
+          "name": "Dhemaji"
+        }
+      ]
+    }
+  ],
+  "inputdata": [
+    
+    {
+      "fname": "Sulemn",
+      "lname": "Basha",
+      "dob": "1994-03-28",
+      "gender": "male",
+      "email": "slmnshk@gmail.com",
+      "mobile": "9999888878",
+      "state": "Assam",
+      "dist": "Cachar",
+      "address": "28/1480,nandyal",
+      "id": 11
+    }
+  ]
+}
