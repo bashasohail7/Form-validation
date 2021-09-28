@@ -8,9 +8,7 @@ import axios from 'axios';
             fieldList:{},
             errorList:{},
             statename:''
-        
         }
-
         }
         pickfname=(obj)=>{
              this.setState({fname:obj.target.value.replace(/[^a-zA-Z]/ig,'')})
@@ -22,32 +20,26 @@ import axios from 'axios';
             let fieldList=this.state.fieldList;
             fieldList[obj.target.name]=obj.target.value
             //fieldList[key]=value
-            //fieldList["fname"]="Sohail"
             //fieldList["mobile"]="8877799443"
             //fieldList["email"]="Sohail@gmail.com"
             this.setState({
                 fieldList
             })
-               
         }
          borderRed=(id)=>document.getElementById(id).style.border="1px solid red"
           borderNone=(id)=>document.getElementById(id).style.border=""
         getdata=()=>{
         var url="http://localhost:3001/state_dist"
         var state="<option name='states' value=''>Choose a state</option>";
-       
         axios.get(url).then(res=>{
-
             for(var i=0;i<res.data.length;i++){
                      state+="<option value="+res.data[i].id+">"+res.data[i].name+"</option>"
             }
             document.getElementById('states').innerHTML=state;
-            
         })
     }
     dist=()=>{
         var url="http://localhost:3001/state_dist";
-       
         var stateid=document.getElementById('states').value;
         axios.get(url).then(res=>{
             for(var j=0;j<res.data.length;j++){
@@ -57,17 +49,14 @@ import axios from 'axios';
             }
         })
         var dist="<option  value='' >Choose a district</option>";
-
   axios.get(url).then(res=>{
 // alert(res.data[stateid].id)
     for(var i=0;i<res.data[stateid].districts.length;i++){
              dist+="<option  >"+res.data[stateid].districts[i].name+"</option>"
     }
     document.getElementById('dist').innerHTML=dist;
-    
 })
     }
-
     componentDidMount(){
         this.getdata()
     }
@@ -121,20 +110,7 @@ if((!document.getElementById('dist').value)){
          this.setState({errorList})
     }
     else{
-        //     if(this.state.lname==undefined){
-        // var data={ "name":this.state.fname,"dob":fieldList.dob,'gender':fieldList.gender,"email":fieldList.email,"mobile":fieldList.mobile,"state":this.state.statename,"dist":document.getElementById('dist').value,"address":this.state.fieldList.address};
-        //     }
-        //    if(!this.state.fieldList.address){
-        //         var data={ "name":this.state.fname+' '+this.state.lname,"dob":fieldList.dob,'gender':fieldList.gender,"email":fieldList.email,"mobile":fieldList.mobile,"state":this.state.statename,"dist":document.getElementById('dist').value,};
-
-        //     }
-        //     else{
-        // var data={ "name":this.state.fname,"dob":fieldList.dob,'gender':fieldList.gender,"email":fieldList.email,"mobile":fieldList.mobile,"state":this.state.statename,"dist":document.getElementById('dist').value,};
-
-        //     }
-       
         var data={ "fname":this.state.fname,"lname":this.state.lname,"dob":fieldList.dob,'gender':fieldList.gender,"email":fieldList.email,"mobile":fieldList.mobile,"state":this.state.statename,"dist":document.getElementById('dist').value,"address":this.state.fieldList.address};
-       
         var url="http://localhost:3001/inputdata";
               axios.post(url,data)
              window.location.href="http://localhost:3000/#/details/";
