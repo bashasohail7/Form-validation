@@ -68,8 +68,9 @@ import axios from 'axios';
         let mpattern = /^[6-9]\d{9,11}$/; // 6-9 refers to number start from 6 to 9 and \d refers to digit and {9} refers to 10 digits [array 0 to 9]
         let epattern=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
-      if(!document.getElementById('dob').value|| !document.querySelector('input[name="gender"]:checked')||(document.getElementById('states').value<0)||(!document.getElementById('dist').value)||( ! this.state.fname || this.state.fname.length<3)||(! epattern.test(fieldList.email)))
+      if((fieldList.mobile&&fieldList.mobile.length<10)|| !document.getElementById('dob').value|| !document.querySelector('input[name="gender"]:checked')||(document.getElementById('states').value<0)||(!document.getElementById('dist').value)||( ! this.state.fname || this.state.fname.length<3)||(! epattern.test(fieldList.email)))
       {
+        
         if(!document.querySelector('input[name="gender"]:checked')){
             errorList["genderError"]="Please select yoiur gender!"
         }else{errorList["genderError"]=" "}
@@ -88,8 +89,15 @@ import axios from 'axios';
             this.borderNone('fname') }
         //*email verfication
         if( ! epattern.test(fieldList.email)){
+            this.borderRed('email')
             errorList["emailError"]="Please enter valid emailid !"
-        }else{errorList["emailError"]=""}
+        }else{errorList["emailError"]="";this.borderNone('email')}
+//MOBILE RECTIFICTAION
+if(fieldList.mobile&&fieldList.mobile.length<10){
+        errorList['mobileError']='please enter valid mobile number';this.borderRed('mobile')
+    }else{ errorList['mobileError']='';this.borderNone('mobile')}
+
+
 //STATE VALIDATION ============================================
 if((document.getElementById('states').value=="")){
     errorList["statesError"]="Please select a state !"
@@ -141,7 +149,7 @@ if((!document.getElementById('dist').value)){
                             <div className="row mb-3">
                                 <label >email id <em>*</em> </label>
                                 <div >
-                                    <input type="text" className="form form-control" value={this.state.fieldList.email} name="email" onChange={this.processinput} />
+                                    <input type="text" className="form form-control" value={this.state.fieldList.email} name="email" id='email' onChange={this.processinput} />
                                     <small >{this.state.errorList.emailError}</small>
                                 </div>
                             </div>
@@ -174,8 +182,9 @@ if((!document.getElementById('dist').value)){
                             <div className="row mb-3">
                                 <label >Mobile Number </label>
                                 <div >
-                                    <input type="number" className="form form-control" id="mobile" value={this.state.fieldList.mobile} name="mobile" onChange={this.processinput} />
+                                    <input type="number" maxLength='10' className="form form-control" id="mobile" value={this.state.fieldList.mobile} name="mobile" onChange={this.processinput} />
                                 </div>
+                                <small>{this.state.errorList.mobileError}</small>
                             </div>
                             <div className="row mb-3">
                                 <label>District <em>*</em></label>
